@@ -8,12 +8,28 @@ class StoryGraphScraper
   end
 
   def scrape
+    scrape_record = ScrapeRecord.create(status: 'started', started_at: Time.current)
+    puts "Scraping The Story Graph..."
+
+    start_time = Time.current
     @driver.get(URL)
+    
     scroll_to_bottom # Did not limit the number of books to scrape because since the data will be available in the future, it is better to scrape all the books
     extract_documents
+    
+    finish_time = Time.current
+    duration = (finish_time - start_time).to_i # Duration in seconds
+    
+    puts "Scraping Complete!"
+    
+    scrape_record.update(status: 'success', finished_at: finish_time, duration: duration)
+  rescue => e
+    scrape_record.update(status: 'failure', finished_at: Time.current, reason: e.message)
+    puts "Scraping Failed: #{e.message}"
   ensure
     @driver.quit
   end
+
 
   private
 
