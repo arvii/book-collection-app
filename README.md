@@ -45,8 +45,8 @@ docker-compose up
 
 
 5. **Create and migrate the database**
-```bash
 Open a new terminal tab/window to run:
+```bash
 rails db:create db:migrate
 ```
 
