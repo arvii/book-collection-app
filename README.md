@@ -1,4 +1,4 @@
-# Application Name
+# Book Collection App
 
 Briefly introduce your application and what it does. This is a good place to make it clear what the purpose of the application is and any high-level details a user or developer would find useful.
 
