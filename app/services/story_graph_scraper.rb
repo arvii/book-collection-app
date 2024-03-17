@@ -8,7 +8,7 @@ class StoryGraphScraper
   end
 
   def scrape
-    scrape_record = ScrapeRecord.create(status: 'started', started_at: Time.current)
+    scrape_record = ScrapeRecord.create(status: 'started', started_at: Time.current, scrape_source: 'The Story Graph')
     puts "Scraping The Story Graph..."
 
     start_time = Time.current
