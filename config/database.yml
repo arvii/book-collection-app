@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  user: postgres
+  password: postgres
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  port: <%= ENV['DEV_DATABASE_PORT'] || 4001 %>
+  database: book_scraper_app_development
+
+test:
+  <<: *default
+  port: <%= ENV['DEV_DATABASE_PORT'] || 4001 %>
+  database: book_scraper_app_test
+
+production:
+  <<: *default
+  database: book_scraper_app_production
+  username: book_scraper_app
+  password: <%= ENV["BOOK_SCRAPER_APP_DATABASE_PASSWORD"] %>
