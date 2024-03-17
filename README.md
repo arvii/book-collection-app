@@ -25,13 +25,14 @@ A step-by-step series of examples that tell you how to get a development environ
 
 1. **Clone the repository**
 ```bash
-git clonehttps://github.com/arvii/book-collection-app.git
+git clone https://github.com/arvii/book-collection-app.git
 cd book-collection-app
 ```
 
 2. **Bundle install**
+(gem install bundler if does not exist)
 ```bash
-bundle install(gem install bundler if does not exist)
+bundle install
 ```
 3. **Build Docker containers**
 ```bash
