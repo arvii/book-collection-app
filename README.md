@@ -26,6 +26,8 @@ A step-by-step series of examples that tell you how to get a development environ
 1. **Clone the repository**
 ```bash
 git clone https://github.com/arvii/book-collection-app.git
+```
+```bash
 cd book-collection-app
 ```
 
