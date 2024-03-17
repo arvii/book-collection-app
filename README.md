@@ -6,6 +6,7 @@ Briefly introduce your application and what it does. This is a good place to mak
 
 - Ruby 3.2.2
 - Docker (for setting up the database environment)
+- yarn
 
 ## Getting Started
 
@@ -46,7 +47,6 @@ docker-compose build
 docker-compose up
 ```
 
-
 5. **Create and migrate the database**
 Open a new terminal tab/window to run:
 ```bash
@@ -58,9 +58,18 @@ rails db:create db:migrate
 rails thestorygraph_scrape:scrape
 ```
 
-7. **Start the app**
+7. **Precompile Assets**
+```bash
+rails assets:precompile
+```
+
+8. **Start the app**
 ```bash
 rails s
 ```
 
+9. **Access the site**
+```bash
+http://localhost:3000/
+```
 
