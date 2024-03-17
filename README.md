@@ -1,6 +1,7 @@
 # Book Collection App
 
-Briefly introduce your application and what it does. This is a good place to make it clear what the purpose of the application is and any high-level details a user or developer would find useful.
+The Book Collection App is a modern application designed to help users curate and manage their personal library collections digitally. By leveraging data from theStoryGraph, an innovative platform for book lovers, this app provides detailed insights and recommendations tailored to each user's reading preferences. It's built with the latest technologies, including Ruby on Rails for the backend and React for a responsive front-end experience, ensuring a seamless and engaging user interface.
+
 
 ## Requirements
 
@@ -19,6 +20,7 @@ What things you need to install the software:
 - Install [Ruby 3.2.2](https://www.ruby-lang.org/en/downloads/)
 - Install [Docker](https://docs.docker.com/get-docker/)
 - Install [Docker Compose](https://docs.docker.com/compose/install/) (usually included with Docker Desktop for Mac and Windows)
+- Install [yarn](https://yarnpkg.com/) (You can install yarn via npm (comes with Node.js) by running npm install --global yarn in your terminal.)
 
 ### Setup
 
