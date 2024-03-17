@@ -1,7 +1,6 @@
 # Book Collection App
 
-The Book Collection App is a modern application designed to help users curate and manage their personal library collections digitally. By leveraging data from theStoryGraph, an innovative platform for book lovers, this app provides detailed insights and recommendations tailored to each user's reading preferences. It's built with the latest technologies, including Ruby on Rails for the backend and React for a responsive front-end experience, ensuring a seamless and engaging user interface.
-
+The Book Collection App is a modern application designed to help users curate and manage their personal library collections digitally.
 
 ## Requirements
 
