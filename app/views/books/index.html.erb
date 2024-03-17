@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Collection App</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+  <!-- Add Bootstrap CDN if not using Webpacker/Yarn for Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="mt-5">
+    <%= link_to 'Home Page', root_path, class: "btn btn-secondary" %>
+    <h1>Welcome to the Book Collection App</h1>
+  </div>
+
+  <%= form_with(url: books_path, method: "get", local: true, class: "row g-3 mt-3") do |form| %>
+    <div class="col-md-3">
+      <%= form.label :title, 'Book name:' %>
+      <%= form.text_field :title, value: params[:title], class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <%= form.label :author_id, 'Filter by author:' %>
+      <%= form.collection_select :author_id, Author.all, :id, :name, { include_blank: true, selected: params[:author_id] }, { class: "form-control" } %>
+    </div>
+    <div class="col-md-3">
+      <%= form.label :year_of_publication, 'Published year:' %>
+      <%= form.number_field :year_of_publication, value: params[:year_of_publication], class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <%= form.label :tag_id, 'Filter by author:' %>
+      <%= form.collection_select :tag_id, Tag.all, :id, :name, { include_blank: true, selected: params[:tag_id] }, { class: "form-control" } %>
+    </div>
+    <div class="col-md-12 mt-2 text-right">
+      <%= form.submit 'Filter', class: "btn btn-primary" %>
+      <%= link_to 'Clear Filters', books_path, class: "btn btn-secondary ml-2" %>
+    </div>
+  <% end %>
+
+
+  <table class="table mt-2">
+    <thead>
+      <tr>
+        <th>
+          <%= link_to books_path(request.params.merge({ sort: 'title', direction: params[:direction] == 'asc' && params[:sort] == 'title' ? 'desc' : 'asc' })) do %>
+            Title
+            <% if params[:sort] == 'title' %>
+              <span class="sort-icon"><%= params[:direction] == 'asc' ? '▲' : '▼' %></span>
+            <% end %>
+          <% end %>
+        </th>
+        <th>
+          <%= link_to books_path(request.params.merge({ sort: 'author', direction: params[:direction] == 'asc' && params[:sort] == 'author' ? 'desc' : 'asc' })) do %>
+            Author
+            <% if params[:sort] == 'author' %>
+              <span class="sort-icon"><%= params[:direction] == 'asc' ? '▲' : '▼' %></span>
+            <% end %>
+          <% end %>
+        </th>
+        <th>
+          <%= link_to books_path(request.params.merge({ sort: 'year_of_publication', direction: params[:direction] == 'asc' && params[:sort] == 'year_of_publication' ? 'desc' : 'asc' })) do %>
+            Published Year
+            <% if params[:sort] == 'year_of_publication' %>
+              <span class="sort-icon"><%= params[:direction] == 'asc' ? '▲' : '▼' %></span>
+            <% end %>
+          <% end %>
+        </th>
+        <th>Tags</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.author.name %></td>
+          <td><%= book.year_of_publication %></td>
+          <td class="tag-cell" data-toggle="tooltip" data-title="<%= book.tags.map(&:name).join(", ") %>">
+            <%= book.tags.map(&:name).join(", ") %>
+          </td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <%= paginate @books %>
+  </div>
+</div>
+</body>
+</html>
