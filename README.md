@@ -30,21 +30,32 @@ cd repository
 ```
 
 2. **Bundle install**
+```bash
 bundle install(gem install bundler if does not exist)
-
+```
 3. **Build Docker containers**
+```bash
 docker-compose build
+```
 
 4. **Start the application**
+```bash
 docker-compose up
+```
 
 
 5. **Create and migrate the database**
+```bash
 Open a new terminal tab/window to run:
 rails db:create db:migrate
+```
 
 6. **Scrape thestorygraph data**
+```bash
 rails thestorygraph_scrape:scrape
+```
 
 7. **Start the app**
+```bash
 rails s
+```
